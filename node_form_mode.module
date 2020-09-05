@@ -1,0 +1,27 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Node form mode module.
+ */
+
+use Drupal\Core\Entity\Display\EntityFormDisplayInterface;
+
+/**
+ * Implements hook_entity_form_display_alter().
+ */
+function node_form_mode_entity_form_display_alter(EntityFormDisplayInterface &$form_display, array $context) {
+  if ($context['entity_type'] !== 'node') {
+    return;
+  }
+
+  /** @var \Drupal\Core\Entity\EntityDisplayRepository $entity_display_repository */
+  $entity_display_repository = \Drupal::service('entity_display.repository');
+  $form_mode_opts = $entity_display_repository->getFormModeOptionsByBundle($context['entity_type'], $context['bundle']);
+
+  $form_mode = \Drupal::config('node_form_mode.settings')->get('form_mode_' . $context['bundle']);
+  if (isset($form_mode_opts[$form_mode])) {
+    $form_display = $entity_display_repository
+      ->getFormDisplay($context['entity_type'], $context['bundle'], $form_mode);
+  }
+}

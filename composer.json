@@ -1,0 +1,13 @@
+{
+    "name": "drupal/node_form_mode",
+    "description": "The node form mode module.",
+    "type": "drupal-module",
+    "license": "GPL-2-or-later",
+    "authors": [
+        {
+            "name": "Stefan Auditor",
+            "email": "stefan@auditor.email"
+        }
+    ],
+    "require": {}
+}

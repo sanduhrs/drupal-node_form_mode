@@ -1,0 +1,7 @@
+node_form_mode.settings:
+  path: '/admin/config/system/node-form-mode'
+  defaults:
+    _title: 'Node form modes'
+    _form: 'Drupal\node_form_mode\Form\SettingsForm'
+  requirements:
+    _permission: 'administer site configuration'

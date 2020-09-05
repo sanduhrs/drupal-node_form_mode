@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the node form mode module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function node_form_mode_install() {
+  $node_types = \Drupal::entityTypeManager()
+    ->getStorage('node_type')
+    ->loadMultiple();
+  foreach ($node_types as $bundle => $node_type) {
+    \Drupal::configFactory()->getEditable('node_form_mode.settings')
+      ->set('form_mode_' . $node_type->id(), 'default')
+      ->save();
+  }
+}
