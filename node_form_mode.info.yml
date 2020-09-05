@@ -4,3 +4,4 @@ description: The node form mode module.
 package: Custom
 core: 8.x
 core_version_requirement: ^8 || ^9
+configure: node_form_mode.settings
