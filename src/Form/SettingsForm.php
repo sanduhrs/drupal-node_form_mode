@@ -36,7 +36,7 @@ class SettingsForm extends ConfigFormBase {
   private function getOptions($bundle) {
     /** @var \Drupal\Core\Entity\EntityDisplayRepository $entity_display_repository */
     $entity_display_repository = \Drupal::service('entity_display.repository');
-    $form_modes = $entity_display_repository->getFormModeOptionsByBundle($entity_type_id, $bundle);
+    $form_modes = $entity_display_repository->getFormModeOptionsByBundle('node', $bundle);
     $options = [];
     foreach ($form_modes as $form_mode_id => $form_mode) {
       $options[$form_mode_id] = $form_mode;
